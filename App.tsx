@@ -1,14 +1,8 @@
-import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
+import RootNavigator from './source/navigation/rootNavigator';
 
-type Props = {};
-
-const App = (props: Props) => {
-  return (
-    <SafeAreaView>
-      <Text>App</Text>
-    </SafeAreaView>
-  );
+const App = () => {
+  return <RootNavigator />;
 };
 
 export default App;
