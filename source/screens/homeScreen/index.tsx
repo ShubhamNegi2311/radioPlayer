@@ -5,6 +5,7 @@ import SpaceView from '../../components/atoms/SpaceView';
 import {style} from '../../components/hoc/appLoader/style';
 import {SongItemData, TopCarouselDataItem} from '../../dataModel';
 import {HomeScreenStack} from '../../navigation/types';
+import {FILTER_TYPE} from '../../utils/contants/enumerations';
 import HeaderContainer from './headerContainer';
 import SongItem from './songItem';
 import TopCarousel from './topCarousel';
@@ -23,18 +24,20 @@ const HomeScreen: React.FC<HomeScreenProps> = props => {
   ];
 
   const topCarouselData: TopCarouselDataItem[] = [
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
-    {name: 'abcdef', imageUrl: ''},
+    {name: 'genre', imageUrl: '', type: FILTER_TYPE.GENRE},
+    {name: 'countries', imageUrl: '', type: FILTER_TYPE.COUNTRIES},
+    {name: 'languages', imageUrl: '', type: FILTER_TYPE.LANGUAGES},
+    {name: 'networks', imageUrl: '', type: FILTER_TYPE.NETWORKS},
   ];
 
   const onSongItemClick = React.useCallback((item: SongItemData) => {
     props.navigation.navigate('PlayerScreen');
+  }, []);
+
+  const onCategoryItemClick = React.useCallback((item: TopCarouselDataItem) => {
+    props.navigation.navigate('FilterScreen', {
+      screenType: item.type,
+    });
   }, []);
 
   return (
@@ -47,7 +50,12 @@ const HomeScreen: React.FC<HomeScreenProps> = props => {
         renderItem={({item}) => {
           return <SongItem item={item} onItemClick={onSongItemClick} />;
         }}
-        ListHeaderComponent={<TopCarousel data={topCarouselData} />}
+        ListHeaderComponent={
+          <TopCarousel
+            data={topCarouselData}
+            onItemClick={onCategoryItemClick}
+          />
+        }
         showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>

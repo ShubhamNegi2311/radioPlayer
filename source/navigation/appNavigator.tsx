@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import FilterScreen from '../screens/filterScreen';
 import HomeScreen from '../screens/homeScreen';
 import PlayerScreen from '../screens/playerScreen';
 import PlayerWithListScreen from '../screens/playerWithListScreen';
@@ -16,6 +17,7 @@ const AppNavigator = () => {
         name="PlayerWithListScreen"
         component={PlayerWithListScreen}
       />
+      <Stack.Screen name="FilterScreen" component={FilterScreen} />
     </Stack.Navigator>
   );
 };

@@ -4,3 +4,10 @@ export enum APP_THEME {
   DARK = 'DARK',
   SYSTEM_DEFAULT = 'SYSTEM_DEFAULT',
 }
+
+export enum FILTER_TYPE {
+  GENRE = 'Genre',
+  LANGUAGES = 'Languages',
+  NETWORKS = 'Networks',
+  COUNTRIES = 'Countries',
+}

@@ -5,6 +5,7 @@ import CarouselItem from './carouselItem';
 
 type TopCarouselProps = {
   data: TopCarouselDataItem[];
+  onItemClick: (item: TopCarouselDataItem) => void;
 };
 
 const TopCarousel: React.FC<TopCarouselProps> = props => {
@@ -13,7 +14,7 @@ const TopCarousel: React.FC<TopCarouselProps> = props => {
       <FlatList
         data={props.data}
         renderItem={({item}) => {
-          return <CarouselItem item={item} />;
+          return <CarouselItem item={item} onItemClick={props.onItemClick} />;
         }}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
